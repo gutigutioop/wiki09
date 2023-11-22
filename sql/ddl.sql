@@ -1,0 +1,8 @@
+CREATE DATABASE `wiki` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+use wiki;
+CREATE TABLE `wikis` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) NOT NULL,
+  `body` mediumtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
