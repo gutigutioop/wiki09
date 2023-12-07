@@ -23,7 +23,7 @@ public class Main {
   /**
    * mainメソッド
    * DBベースwikiアプリのエントリポイント
-   * @param args コマンドライン引数(未使用)
+   * @param args コマンドライン引数(未使用)　　メインクラスでは、clearとaddAllメソッドは、executeUpdate（更新に関する）メソッドを使ってる。
    */
   public static void main(String[] args) {
 

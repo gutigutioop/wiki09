@@ -24,7 +24,7 @@ public class Dao {
   
   /**
    * コンストラクタ
-   * DB接続用のフィールドを初期化する
+   * DB接続用のフィールドを初期化する null別に使わなくて良い。念のため使用。インスタントはnullで初期化。変数宣言は初期化？
    */
   public Dao() {
     this.con = null;
@@ -37,14 +37,14 @@ public class Dao {
    */
   protected void open() {
     try {
-      Class.forName("com.mysql.cj.jdbc.Driver");
+     // Class.forName("com.mysql.cj.jdbc.Driver");
       this.con = DriverManager.getConnection(Const.DB_URI, Const.DB_USER, Const.DB_PASS);
       System.out.println("データベースへの接続に成功しました。");
     } catch (SQLException e) {
       System.err.println("データベースへの接続に失敗しました。");
       System.err.println(e);
-    } catch (ClassNotFoundException e) {
-      System.err.println(e);
+   // } catch (ClassNotFoundException e) {
+     // System.err.println(e);
     }
   }
 
@@ -79,7 +79,7 @@ public class Dao {
     try {
       this.stm = this.con.prepareStatement(sql);
       // 実行SQLの表示
-      System.out.println("SQL:" + this.stm.toString());
+      System.out.println("SQL:" + this.stm.toString());  //クラス：実行を表す。
       this.stm.executeUpdate();
       System.out.println("更新SQLの実行に成功しました。");
     } catch (SQLException e) {
@@ -89,8 +89,9 @@ public class Dao {
   }
  
   /**
-   * clearメソッド
-   * 担当テーブルをtruncate(全件削除)する
+   * clearメソッド　　★clearメソッドはexecuteUpdateメソッドを使って、テーブルの中身を空にしてとDBに更新を命令している。メインクラスでclearメソッドを使う。executeUpdateメソッドは更新するため作った
+   * 担当テーブルをtruncate(全件削除)する　　truncateは、DBの中身をクリアする。テーブルは残っている。テーブルの中のデータのみ削除。箱のみ残っている。凹
+   * clearメソッドは、executeUpdateメソッドを使っている（呼んでる）executeUpdateは、DBの中身更新するときのコマンド実行。SQL実行のためのOBJ
    */
   public void clear() {
     open();

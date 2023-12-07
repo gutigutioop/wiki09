@@ -19,8 +19,8 @@ public class WikiDao extends Dao {
   }
 
   
-  /**
-   * addメソッド
+  /**DAOの継承クラスなので、executeUpdateを宣言なしで使える。
+   * addメソッド　　addの中でexecuteUpdateメソッドを呼んでる。
    * 引数のWikiDtoのフィールド値をDBのテーブルに追加する
    * @param dto 追加するWikiDto
    */
@@ -30,7 +30,7 @@ public class WikiDao extends Dao {
   }
   
   /**
-   * addAllメソッド
+   * addAllメソッド→addAllは、テーブルの中空にしてから、wikiで読み込んだ内容もう一度を箱に入れている。addAllは、addを呼んでる。40行目が27行目に飛ぶ。
    * 引数のWikiDtoのListにあるwikiを全てDBのテーブルに追加する
    * @param list 追加するWikiDtoのArrayList
    */
